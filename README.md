@@ -4,7 +4,7 @@ Includes:
 - Modified 2v2 board overlays and deployment/terrain zones.
 - Updated scoresheet for 2v2 scoring.
 - Four-player token, tactics, profile, and faction points layout.
-- Simplified dice mats.
+- Simplified enviroment for multiple players at table.
 - Custom 1D3 quick-roll button and saved D3 object.
 ## Usage
 Import or load `TS_Save_4.json` in Tabletop Simulator
