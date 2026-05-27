@@ -1,5 +1,5 @@
 # Age of Sigmar Spearhead 2v2 TTS
-A Tabletop Simulator mod setup for playing Age of Sigmar Spearhead in 2v2.
+This repository contains a Tabletop Simulator mod. Lua scripts are embedded inside `TS_Save_4.json` in TTS `LuaScript` fields.
 Includes:
 - Modified 2v2 board overlays and deployment/terrain zones.
 - Updated scoresheet for 2v2 scoring.
