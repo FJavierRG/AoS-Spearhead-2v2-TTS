@@ -1,0 +1,24 @@
+-- Exported from TS_Save_4.json for review only.
+-- TTS object: Injection Detector
+-- GUID: 5c328f
+-- Source of truth: embedded LuaScript inside TS_Save_4.json
+
+-- Ziggy's Malicious Script Detector.
+-- If code is injected it will trigger.
+-- Swaps to state 2, which onload writes
+-- a message and triggers effects
+
+local original_script = self.getLuaScript()
+local og_length = string.len(original_script)
+local script_to_compare = self.getLuaScript()
+local new_length = string.len(script_to_compare)
+
+function objectCheck()
+    script_to_compare = self.getLuaScript()
+    new_length = string.len(script_to_compare)
+    if og_length ~= new_length then
+        self.setState(2) -- let the fun begin
+    end
+end
+
+Wait.time(objectCheck, 15, -1) -- 15 seconds, can modify here.

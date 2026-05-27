@@ -1,5 +1,7 @@
 # Age of Sigmar Spearhead 2v2 TTS
 This repository contains a Tabletop Simulator mod. Lua scripts are embedded inside `TS_Save_4.json` in TTS `LuaScript` fields.
+
+Readable Lua exports are also included in `scripts/` for code review and GitHub language detection. These files are reference copies; Tabletop Simulator still loads the embedded scripts from `TS_Save_4.json`.
 Includes:
 - Modified 2v2 board overlays and deployment/terrain zones.
 - Updated scoresheet for 2v2 scoring.
