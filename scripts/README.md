@@ -16,4 +16,4 @@ The Tabletop Simulator save remains the source of truth. If a script is edited h
 | `injection_detector_5c328f.lua` | Injection Detector | `5c328f` | 629 |
 | `red_dice_roller_beae28.lua` | Red Kustom 40k Dice Roller Mk3 | `beae28` | 11011 |
 | `red_dice_table_c57d70.lua` | Red Dice Table | `c57d70` | 40783 |
-| `spearhead_scoresheet_814d2d.lua` | Spearhead Scoresheet | `814d2d` | 39644 |
+| `spearhead_scoresheet_814d2d.lua` | Spearhead Scoresheet | `814d2d` | 41554 |

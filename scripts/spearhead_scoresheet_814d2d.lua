@@ -21,6 +21,7 @@ sheetData    = sheetData or {
 }
 
 spawnedTerrain      = spawnedTerrain or {}
+spawnedTerrainClones = spawnedTerrainClones or {}
 spawnedBattleDecks  = spawnedBattleDecks or {}
 spawnedDeck         = spawnedDeck or nil
 restoringFromSave = restoringFromSave or false
@@ -111,6 +112,69 @@ local function _applyTerrainTransforms(saved)
             obj.setRotation(tf.rot)
             if tf.locked ~= nil then obj.setLock(tf.locked) end
             if tf.gravity ~= nil then obj.use_gravity = tf.gravity end
+        end
+    end
+end
+
+-- 2v2: mirror terrain from one board to the other (x=-33..-34 -> x=+33..+34).
+TERRAIN_MIRROR_ORIGIN_X = 0
+
+local function _destroyTerrainClones()
+    for _, obj in ipairs(spawnedTerrainClones or {}) do
+        if obj and obj.destruct then
+            pcall(function() obj.destruct() end)
+        end
+    end
+    spawnedTerrainClones = {}
+end
+
+local function _mirrorTerrainPosition(pos)
+    return {
+        x = (2 * TERRAIN_MIRROR_ORIGIN_X) - pos.x,
+        y = pos.y,
+        z = pos.z
+    }
+end
+
+local function _mirrorTerrainRotation(rot)
+    return {
+        x = rot.x,
+        y = (rot.y + 180) % 360,
+        z = rot.z
+    }
+end
+
+local function _spawnTerrainCloneFromOriginal(obj)
+    if not obj or not obj.clone then return nil end
+
+    local pos = obj.getPosition()
+    local rot = obj.getRotation()
+    local copy = obj.clone({
+        position = _mirrorTerrainPosition({x = pos.x, y = pos.y, z = pos.z}),
+        rotation = _mirrorTerrainRotation({x = rot.x, y = rot.y, z = rot.z}),
+        snap_to_grid = false
+    })
+
+    if copy then
+        copy.unlock()
+        copy.use_gravity = true
+        copy.interactable = true
+        table.insert(spawnedTerrainClones, copy)
+    end
+
+    return copy
+end
+
+local function _spawnTerrainDuplicates(pack)
+    _destroyTerrainClones()
+
+    local terrainSet = terrainObjects[pack]
+    if not terrainSet then return end
+
+    for _, data in ipairs(terrainSet) do
+        local obj = _getObj(data.guid)
+        if obj then
+            _spawnTerrainCloneFromOriginal(obj)
         end
     end
 end
@@ -456,14 +520,14 @@ board2States = {
 
 terrainObjects = {
     ["Fire & Jade"] = {
-        -- 2v2: only the original terrain set is spawned. Center = {-33.05, 0.81, 0.44}.
+        -- 2v2: originals on board 1 (x ~ -33). Clones mirrored to board 2 on spawn.
         { guid = "d8daa9", position = {x = -34.30, y = 0.81, z = -3.560001}, rotation = {x = 0, y = 225, z = 0} },
         { guid = "ae161b", position = {x = -34.30, y = 0.81, z = 4.440003}, rotation = {x = 0, y = 315, z = 0} },
         { guid = "af3b95", position = {x = -31.80, y = 0.81, z = -1.560001}, rotation = {x = 0, y = 225, z = 0} },
         { guid = "a6132f", position = {x = -31.80, y = 0.81, z = 2.439999}, rotation = {x = 0, y = 315, z = 0} }
     },
     ["Sand & Bone"] = {
-        -- 2v2: preserve original Sand & Bone formation, moved to center {-33.05, 0.44}.
+        -- 2v2: originals on board 1 (x ~ -33). Clones mirrored to board 2 on spawn.
         { guid = "bb1f12", position = {x = -34.05, y = 2.10, z = -4.56}, rotation = {x = 0, y = 315, z = 0} },
         { guid = "e8fb47", position = {x = -32.05, y = 2.40, z = -3.06}, rotation = {x = 0, y = 315, z = 0} },
         { guid = "4e2bf4", position = {x = -34.05, y = 2.15, z = 5.44}, rotation = {x = 0, y = 225, z = 0} },
@@ -749,6 +813,7 @@ function spawnTerrain(pack)
                 print("[spawnTerrain] Could not find object with GUID: " .. data.guid)
             end
         end
+        _spawnTerrainDuplicates(pack)
     end, 0.1)
 end
 
@@ -778,6 +843,7 @@ function hideTerrain(pack)
 
     Wait.time(function()
         spawnedTerrain = {}
+        _destroyTerrainClones()
         for _, data in ipairs(terrainSet) do
             local obj = getObjectFromGUID(data.guid)
             if obj then
@@ -1132,4 +1198,8 @@ function restoreFromState(savedData)
             end
         end
     end
+
+    Wait.time(function()
+        _spawnTerrainDuplicates(pack)
+    end, 0.25)
 end
