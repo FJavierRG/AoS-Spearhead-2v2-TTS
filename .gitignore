@@ -1,12 +1,13 @@
+# Generated TTS save (build locally with tools/build.py)
+Spearhead_2v2.json
+
 # Tabletop Simulator noise
-TS_AutoSave*.json
 TS_Save_*.json
-!TS_Save_4.json
+TS_AutoSave*.json
 SaveFileInfos.json
 WorkshopFileInfos.json
 
 # Local/temp files
 *.tmp
 *.bak
-*.py
 __pycache__/

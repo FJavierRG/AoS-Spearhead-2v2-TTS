@@ -168,7 +168,7 @@ Después del refactor:
 ## Información adicional del save
 
 - Versión del juego/mod: TTS, mod base "Age of Sigmar Spearhead" (Steam Workshop), Spearhead 2v2 modificado por nosotros.
-- Save file: `TS_Save_4.json` (~11 MB, 130K líneas tras refactor).
+- Save file: `Spearhead_2v2.json` (generado con `python tools/build.py`).
 - Global script (`LuaScript` en raíz): contiene `onLoad`, `onChat`, `onObjectNumberTyped` (global), tablas `overlayButtons`, `overlayTemplates`, `overlayTypeZ`, `_spawnOverlay`, `_despawnOverlay`, `_handleOverlayInput`, `_hideOverlayTemplates`.
 - Scripts locales: cada botón tiene `LuaScript` con `onLoad` (broadcast) + `onNumberTyped` que llama a `Global.call("_handleOverlayInput", {...})`.
 
@@ -176,7 +176,7 @@ Después del refactor:
 
 ## Cómo reproducir
 
-1. Cargar `TS_Save_4.json` en TTS.
+1. Cargar `Spearhead_2v2.json` en TTS.
 2. Esperar a ver el mensaje broadcast "==> Global script CARGADO OK!" y 7 mensajes `[boton-onLoad] ... cargado!`.
 3. Pasar el ratón sobre el botón "Territory" (visible a la derecha del tablero combinado, a `x≈31.5, z≈12`).
 4. Pulsar la tecla `2`.

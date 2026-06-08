@@ -1,7 +1,7 @@
--- Exported from TS_Save_4.json for review only.
+-- Exported from Spearhead_2v2.base.json for review only.
 -- TTS object: Spearhead Scoresheet
 -- GUID: 814d2d
--- Source of truth: embedded LuaScript inside TS_Save_4.json
+-- Source of truth: edit this file, then run `python tools/build.py`
 
 -- ----------------------------
 -- GLOBALS & DEFAULT STATE

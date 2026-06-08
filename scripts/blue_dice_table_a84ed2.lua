@@ -1,7 +1,7 @@
--- Exported from TS_Save_4.json for review only.
+-- Exported from Spearhead_2v2.base.json for review only.
 -- TTS object: Blue Dice Table
 -- GUID: a84ed2
--- Source of truth: embedded LuaScript inside TS_Save_4.json
+-- Source of truth: edit this file, then run `python tools/build.py`
 
 -- FTC-GUID: a84ed2,c57d70
 function none()

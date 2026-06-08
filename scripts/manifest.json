@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "scripts": [
+    {
+      "file": "global.lua",
+      "guid": "global",
+      "object": "Global"
+    },
+    {
+      "file": "spearhead_scoresheet_814d2d.lua",
+      "guid": "814d2d",
+      "object": "Spearhead Scoresheet"
+    },
+    {
+      "file": "aura_indicator_7cdc5a.lua",
+      "guid": "7cdc5a",
+      "object": "Aura Indicator"
+    },
+    {
+      "file": "auto_player_promoter_533765.lua",
+      "guid": "533765",
+      "object": "Auto Player Promoter"
+    },
+    {
+      "file": "blue_dice_roller_4e0e0b.lua",
+      "guid": "4e0e0b",
+      "object": "Blue Kustom 40k Dice Roller Mk3"
+    },
+    {
+      "file": "blue_dice_table_a84ed2.lua",
+      "guid": "a84ed2",
+      "object": "Blue Dice Table"
+    },
+    {
+      "file": "red_dice_roller_beae28.lua",
+      "guid": "beae28",
+      "object": "Red Kustom 40k Dice Roller Mk3"
+    },
+    {
+      "file": "red_dice_table_c57d70.lua",
+      "guid": "c57d70",
+      "object": "Red Dice Table"
+    },
+    {
+      "file": "bubble_position_helper_86398e.lua",
+      "guid": "86398e",
+      "object": "Bubble & Position Helper"
+    },
+    {
+      "file": "injection_detector_5c328f.lua",
+      "guid": "5c328f",
+      "object": "Injection Detector"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Guia para modificar overlays en Tabletop Simulator
 
-Este documento resume el metodo correcto para modificar overlays del save `TS_Save_4.json` sin volver a ajustar a ciegas.
+Este documento resume el metodo correcto para modificar overlays del save `Spearhead_2v2.base.json` sin volver a ajustar a ciegas.
 
 ## Idea clave
 
