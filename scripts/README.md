@@ -12,7 +12,7 @@ The Tabletop Simulator save remains the source of truth. If a script is edited h
 | `blue_dice_roller_4e0e0b.lua` | Blue Kustom 40k Dice Roller Mk3 | `4e0e0b` | 11011 |
 | `blue_dice_table_a84ed2.lua` | Blue Dice Table | `a84ed2` | 40783 |
 | `bubble_position_helper_86398e.lua` | Bubble & Position Helper | `86398e` | 12163 |
-| `global.lua` | Global | `global` | 8981 |
+| `global.lua` | Global | `global` | 9801 |
 | `injection_detector_5c328f.lua` | Injection Detector | `5c328f` | 629 |
 | `red_dice_roller_beae28.lua` | Red Kustom 40k Dice Roller Mk3 | `beae28` | 11011 |
 | `red_dice_table_c57d70.lua` | Red Dice Table | `c57d70` | 40783 |

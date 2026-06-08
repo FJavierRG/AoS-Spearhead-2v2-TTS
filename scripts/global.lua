@@ -14,8 +14,33 @@ blueDiceRoller_GUID = "4e0e0b"
 -- DIAGNOSTICO
 -- ============================================================
 function onLoad()
+    _removeResidualContainerSnapPoints()
     _assignSpearheadTeams()
     Wait.frames(function() _hideOverlayTemplates() end, 30)
+end
+
+function _removeResidualContainerSnapPoints()
+    if not Global or not Global.getSnapPoints or not Global.setSnapPoints then return end
+
+    local ok, snap_points = pcall(function() return Global.getSnapPoints() end)
+    if not ok or type(snap_points) ~= "table" then return end
+
+    local filtered = {}
+    for _, snap in ipairs(snap_points) do
+        local pos = snap.position or snap.Position
+        local is_residual = pos
+            and pos.x >= 18.0 and pos.x <= 25.5
+            and pos.y >= 0.8 and pos.y <= 1.1
+            and pos.z >= -10.5 and pos.z <= -3.0
+
+        if not is_residual then
+            table.insert(filtered, snap)
+        end
+    end
+
+    if #filtered ~= #snap_points then
+        pcall(function() Global.setSnapPoints(filtered) end)
+    end
 end
 
 function onPlayerChangeColor(player_color)
